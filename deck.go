@@ -20,10 +20,8 @@ func newDeck() deck {
 	for _, cardS := range cardSuits {
 		for _, cardV := range cardValues {
 			cards = append(cards, cardV+" of "+cardS)
-
 		}
 	}
-
 	return cards
 }
 
@@ -31,17 +29,14 @@ func (d deck) print() {
 	for i, card := range d {
 		fmt.Println(i, card)
 	}
-
 }
 
 func deal(d deck, handSize int) (deck, deck) {
 	return d[0:handSize], d[handSize:]
-
 }
 
 func (d deck) makeString() string {
 	return strings.Join([]string(d), ", ")
-
 }
 
 func (d deck) saveToFile(filename string) error {
