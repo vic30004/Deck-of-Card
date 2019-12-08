@@ -1,9 +1,9 @@
 package main
 
-// Create A new type of deck
-// Assing it a slice of type string
 import (
 	"fmt"
+	"io/ioutil"
+	"os"
 	"strings"
 )
 
@@ -40,4 +40,18 @@ func deal(d deck, handSize int) (deck, deck) {
 func (d deck) makeString() string {
 	return strings.Join([]string(d), ", ")
 
+}
+
+func (d deck) saveToFile(filename string) error {
+	return ioutil.WriteFile(filename, []byte(d.makeString()), 0666)
+}
+
+func newDeckFromFile(filename string) deck {
+	bs, err := ioutil.ReadFile(filename)
+	if err != nil {
+		// We can log the error and return a call to newDeck()
+		// Or we can log the error and quit the program
+		fmt.Println("Error:", err)
+		os.Exit(1)
+	}
 }
