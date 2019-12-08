@@ -1,15 +1,9 @@
 package main
 
-import "fmt"
-
-
-
-
 func main() {
 	cards := newDeck()
-
-	cards.print()
-	fmt.Printf("%T", cards)
-
+	hand,remainigDeck:=deal(cards,5)
+	hand.print()
+	remainigDeck.print()
 }
 
